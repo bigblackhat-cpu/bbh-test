@@ -11,15 +11,15 @@ on:
 jobs:
   Test:
     runs-on: ubuntu-latest
-    container:
-      image: python:3.12-slim
-      options: >-
-        --entrypoint /bin/sh
-        -c "pip install -q uv && exec \"$@\""
+    
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+
+      - name: install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+        shell: bash
 
       - name: init depandency
         run: uv sync
