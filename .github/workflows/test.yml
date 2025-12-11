@@ -1,18 +1,21 @@
-name: "Test"
+name: "CI/CD"
 
 on:
   push:
     branches: ["main"]
   pull_request:
-    branches: ["main"]
   
   workflow_dispatch:
 
 jobs:
   Test:
     runs-on: ubuntu-latest
-    
 
+    if: |
+      github.event_name == 'pull_request' || 
+      github.event_name == 'workflow_dispatch'
+    
+  
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -26,3 +29,6 @@ jobs:
 
       - name: execute "main"
         run: uv run main.py
+
+      - name: paly
+        run: pwd
