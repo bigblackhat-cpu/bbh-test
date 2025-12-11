@@ -41,12 +41,8 @@ jobs:
                 ps -p 1 -o comm=
                 systemctl --version
 
-                echo '=======start deploy==========='
+                echo '=======start deploy pull "from main" ==========='
                 git pull
-                echo '=======git checkout==========='
-                git checkout dev/djangoweb
-                echo '=======git pull 如果有冲突会卡住==========='
-                git pull dev/djangoweb
                 echo '=======uv sync==========='
                 uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple
                 echo '=======启动服务==========='
