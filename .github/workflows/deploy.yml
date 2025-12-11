@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /srv/django_react_web_project/
+            cd /srv/django_react_web_project/bbh-test/
             git pull 
             uv sync
             sudo systemctl restart gitpythontest
