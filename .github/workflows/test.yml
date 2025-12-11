@@ -75,8 +75,8 @@ jobs:
                 systemctl --version
 
                 echo '=======start deploy==========='
-                git checkout bbh-test
-                git pull origin bbh-test
+                git checkout deploy-test
+                git pull origin deploy-test
                 uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
                 
