@@ -20,12 +20,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      - name: whoami
+        run: whoami
+
       - name: install uv
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
         shell: bash
 
       - name: init depandency
         run: uv sync
+      - name: init dep
+        run: apt install node.js
 
       - name: execute "main"
         run: uv run main.py
