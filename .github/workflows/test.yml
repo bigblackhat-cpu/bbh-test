@@ -31,7 +31,7 @@ jobs:
         run: uv sync
         
       - name: init dep
-        run: sudo apt install node
+        run: sudo apt install nodejs
 
       - name: execute "main"
         run: uv run main.py
