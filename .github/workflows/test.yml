@@ -66,6 +66,12 @@ jobs:
               port: ${{ secrets.PORT }}
               script: |
                 cd /srv/django_react_web_project/bbh-test/
+
+                pwd
+                which python
+                python -v
+                uv --version
+                whoami
                 
 
   
