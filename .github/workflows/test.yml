@@ -75,9 +75,14 @@ jobs:
                 systemctl --version
 
                 echo '=======start deploy==========='
+                echo '=======git checkout==========='
                 git checkout deploy-test
+                echo '=======git pull 如果有冲突会卡住==========='
                 git pull origin deploy-test
+                echo '=======uv sync==========='
                 uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple
+                echo '=======启动服务==========='
+                sudo /usr/bin/systemctl restart gitpythontest.service
 
                 
                 
