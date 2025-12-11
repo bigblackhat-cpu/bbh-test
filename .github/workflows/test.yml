@@ -70,8 +70,12 @@ jobs:
                 cd /srv/django_react_web_project/bbh-test/
                 pwd
                 which python
-                python -v
+                python3.10 -v
                 uv --version
+                git --version
+                ps -p 1 -o comm=
+                systemctl --version
+                
                 whoami
                 
 
