@@ -26,5 +26,5 @@ jobs:
           script: |
             cd /srv/django_react_web_project/bbh-test/
             git pull 
-            uv sync
+            /home/${{ secrets.USER_NAME }}/.local/bin/uv sync
             sudo systemctl restart gitpythontest
