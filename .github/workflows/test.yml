@@ -32,3 +32,15 @@ jobs:
 
       - name: paly
         run: pwd
+
+      - name: show file
+        run: ls -a
+
+      - name: show python
+        run: which python
+
+      - name: use python
+        run: python
+
+      - name: test o python
+        run: python main.py
