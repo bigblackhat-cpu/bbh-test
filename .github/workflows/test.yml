@@ -57,7 +57,7 @@ jobs:
   Deploy:
         runs-on: ubuntu-latest
         steps:
-          - name: Pull Code excute in host
+          - name: connect to the host
             uses: appleboy/ssh-action@v1
             with:
               host: ${{ secrets.HOST_NAME }}
