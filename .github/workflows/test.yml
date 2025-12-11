@@ -66,17 +66,18 @@ jobs:
               port: ${{ secrets.PORT }}
               script: |
                 export PATH=$PATH:/home/${{ secrets.USER_NAME }}/.local/bin/
-                
                 cd /srv/django_react_web_project/bbh-test/
-                pwd
-                which python
-                python3.10 --version
+                echo '=========basic env==========='
                 uv --version
                 git --version
+                docker --version
                 ps -p 1 -o comm=
                 systemctl --version
+
+                echo '=======start deploy==========='
+                git pull
+                uv sync
                 
-                whoami
                 
 
   
