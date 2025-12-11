@@ -76,7 +76,9 @@ jobs:
 
                 echo '=======start deploy==========='
                 git pull
-                uv sync
+                uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+                
                 
                 
 
