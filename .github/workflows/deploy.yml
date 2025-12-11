@@ -13,18 +13,16 @@ jobs:
     runs-on: ubuntu-latest
     
 
-    # steps:
-    #   # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 
-    #   - name: Pull Code excute in host
-    #     uses: appleboy/ssh-action@v1
-    #     with:
-    #       host: ${{ secrets.HOST_NAME }}
-    #       username: ${{ secrets.USER_NAME }}
-    #       password: ${{ secrets.PASSWORD }}
-    #       port: ${{ secrets.PORT }}
-    #       script: |
-    #         cd /srv/django_react_web_project/bbh-test/
-    #         git pull 
-    #         /home/${{ secrets.USER_NAME }}/.local/bin/uv sync
-    #         sudo systemctl restart gitpythontest
+      - name: Pull Code excute in host
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST_NAME }}
+          username: ${{ secrets.USER_NAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /srv/django_react_web_project/bbh-test/
+            ls
