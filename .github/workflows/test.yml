@@ -29,8 +29,9 @@ jobs:
 
       - name: init depandency
         run: uv sync
+        
       - name: init dep
-        run: apt install node.js
+        run: sudo apt install node
 
       - name: execute "main"
         run: uv run main.py
