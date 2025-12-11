@@ -1,21 +1,30 @@
-name: "Test"
+name: "CI/CD"
 
 on:
   push:
     branches: ["main"]
   pull_request:
-    branches: ["main"]
   
   workflow_dispatch:
 
 jobs:
   Test:
     runs-on: ubuntu-latest
-    
 
+    if: |
+      github.event_name == 'pull_request' || 
+      github.event_name == 'workflow_dispatch'
+    
+  
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+
+      - name: whoami
+        run: whoami
+
+      
+
 
       - name: install uv
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -23,6 +32,60 @@ jobs:
 
       - name: init depandency
         run: uv sync
+        
+      - name: init dep
+        run: sudo apt install nodejs
 
       - name: execute "main"
         run: uv run main.py
+
+      - name: paly
+        run: pwd
+
+      - name: show file
+        run: ls -a
+
+      - name: show python
+        run: which python
+
+      - name: use python
+        run: python
+
+      - name: test o python
+        run: python main.py
+
+  Deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - name: connect to the host
+            uses: appleboy/ssh-action@v1
+            with:
+              host: ${{ secrets.HOST_NAME }}
+              username: ${{ secrets.USER_NAME }}
+              password: ${{ secrets.PASSWORD }}
+              port: ${{ secrets.PORT }}
+              script: |
+                export PATH=$PATH:/home/${{ secrets.USER_NAME }}/.local/bin/
+                cd /srv/django_react_web_project/bbh-test/
+                echo '=========basic env==========='
+                uv --version
+                git --version
+                docker --version
+                ps -p 1 -o comm=
+                systemctl --version
+
+                echo '=======start deploy==========='
+                echo '=======git checkout==========='
+                git checkout deploy-test
+                echo '=======git pull 如果有冲突会卡住==========='
+                git pull origin deploy-test
+                echo '=======uv sync==========='
+                uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple
+                echo '=======启动服务==========='
+                sudo /usr/bin/systemctl restart gitpythontest.service
+
+                
+                
+                
+
+  
