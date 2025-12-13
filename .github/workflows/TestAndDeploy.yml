@@ -40,10 +40,10 @@ jobs:
                 docker --version
                 ps -p 1 -o comm=
                 systemctl --version
-
                 echo '=======start deploy pull "from main" ==========='
                 git pull
                 echo '=======uv sync==========='
                 uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple
                 echo '=======启动服务==========='
                 echo "pull over waiting systemctl config..."
+

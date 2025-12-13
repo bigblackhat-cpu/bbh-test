@@ -14,7 +14,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-+vriwa39e=88@dqgh-tyuh&t^1q$z1hwb=v()7qmggeoa)=p9%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['120.76.41.122','localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -143,7 +143,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-
+STATIC_ROOT = BASE_DIR / 'staticstore/'
 # Media file
 # https://docs.djangoproject.com/zh-hans/5.2/ref/settings/#std-setting-MEDIA_ROOT
 
